@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Extension",
+    "version": "0.1.0",
+    "version_name": "0.1.0",
+    "description": "Chrome Extension Example",
+    "author": "Leonid Rezvitsky",
+    "icons": {
+      "128": "public/128.png"
+    },
+    "browser_action": {
+      "default_popup": "dist/index.html",
+      "default_title": "Extension"
+    }
+  }

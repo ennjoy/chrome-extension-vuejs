@@ -1,0 +1,19 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+html {
+    body {
+        #app {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        &.popup {
+            width: 357px;
+            min-height: 600px;
+            height: 600px;
+            max-height: 600px;
+        }
+    }
+}
