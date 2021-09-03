@@ -1,7 +1,7 @@
 # Chrome Extension (Vue 3 + Vue Router + Typescript + Vite + TailwindCSS)
 
 <p align="center">
-  <img src="preview.png">
+  <img src="https://raw.githubusercontent.com/Rezvitsky/chrome-extension-vuejs/main/preview.png">
   <br>
 </p>
 
