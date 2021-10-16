@@ -11,11 +11,15 @@
 
 Hey! To write the extension, I will use:
 
-* Vuejs
-* Vue Router
-* Vitejs
-* TailwindCSS
-* SASS
+* [Vitejs](https://vitejs.dev/)
+* [Vuejs](https://v3.vuejs.org/)
+* [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
+* [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages)
+* [Unplugin auto import](https://github.com/antfu/unplugin-auto-import)
+* [Unplugin vue components](https://github.com/antfu/unplugin-vue-components)
+* [TailwindCSS](https://tailwindcss.com/)
+* [SASS](https://sass-lang.com/)
+
 
 # Start 🚀
 
@@ -108,51 +112,53 @@ Connect the ``main.scss`` into the ``main.ts`` file
 
 <br>
 
-# Vue Router
+# Vue Router (vite-plugin-vue-layouts + vite-plugin-pages)
 To install, run the command:
 
-    npm i -S vue-router@4.x
+    npm i -S vue-router@4.x vite-plugin-vue-layouts vite-plugin-pages
 
 <br>
+Updates main.ts
 
-Create router/index.ts file with content:
+    import { createApp } from 'vue'
+    import { createRouter, createWebHashHistory } from 'vue-router'
+    import generatedRoutes from 'virtual:generated-pages'
+    import { setupLayouts } from 'virtual:generated-layouts'
+    import App from '~/App.vue'
+    import '~/assets/scss/main.scss'
 
-    import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-
-    const routes: Array<RouteRecordRaw> = [
-        {
-            path: '/',
-            name: 'Index',
-            component: () => import('../views/Index.vue')
-        },
-        {
-            path: '/about',
-            name: 'About',
-            component: () => import('../views/About.vue')
-        },
-        {
-            path: '/contacts',
-            name: 'Contacts',
-            component: () => import('../views/Contacts.vue')
-        },
-    ]
+    const routes = setupLayouts(generatedRoutes)
 
     const router = createRouter({
         history: createWebHashHistory(),
         routes
     })
 
-    export default router
+    createApp(App).use(router).mount('#app')
 
 <br>
 
-Connect the ``router/index.ts`` into the ``main.ts`` file
-
-    import router from './router'
+Create a Default.vue file in the layouts folder with the following content:
 
 <br>
 
-For example pages, I created 3 files in the views folder: Index.vue, About.vue, Contacts.vue
+    <template>
+        <div class="w-full min-h-full flex">
+            <div class="flex flex-1 md:flex-0 mx-auto">
+                <div class="flex-1 flex flex-col items-center">
+                    <div class="flex-1 flex flex-row w-full justify-center">
+                    <div class="flex-1 flex flex-col items-center shadow-lg x-w-2xl max-h-screen">
+                        <RouterView />
+                        <Footer />
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+<br>
+
+For example pages, I created 3 files in the pages folder: Index.vue, About.vue, Contacts.vue
 
 <br>
 
@@ -168,6 +174,12 @@ Index.vue
         </div> 
     </template>
 
+    <route lang="yaml">
+        name: Index
+        meta:
+        layout: Default
+    </route>
+
 <br>
 
 About.vue
@@ -182,6 +194,12 @@ About.vue
         </div> 
     </template>
 
+    <route lang="yaml">
+        name: About
+        meta:
+        layout: Default
+    </route>
+
 <br>
 
 Contacts.vue
@@ -195,6 +213,12 @@ Contacts.vue
             </div>
         </div> 
     </template>
+
+    <route lang="yaml">
+        name: Contacts
+        meta:
+        layout: Default
+    </route>
 
 <br>
 
