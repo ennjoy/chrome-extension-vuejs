@@ -13,8 +13,8 @@ Hey! To write the extension, I will use:
 
 * [Vitejs](https://vitejs.dev/)
 * [Vuejs](https://v3.vuejs.org/)
-* [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
-* [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages)
+* [Vite plugin vue layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
+* [Vite plugin pages](https://github.com/hannoeru/vite-plugin-pages)
 * [Unplugin auto import](https://github.com/antfu/unplugin-auto-import)
 * [Unplugin vue components](https://github.com/antfu/unplugin-vue-components)
 * [TailwindCSS](https://tailwindcss.com/)
